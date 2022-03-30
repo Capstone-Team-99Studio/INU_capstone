@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical">
+
+<Button
+    android:id="@+id/foodsettingBtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="음식정보수정" />
+
+<Button
+    android:id="@+id/reviewBtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="작성된리뷰보기" />
+
+<Button
+    android:id="@+id/foodDeleteBtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="항목 삭제" />
+
+<Button
+    android:id="@+id/cancelBtn"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="취소" />
+</LinearLayout>

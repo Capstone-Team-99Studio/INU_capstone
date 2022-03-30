@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="아이디"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/regi_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="inu.ac.kr 이메일로 작성해주세요"
+            android:inputType="textEmailAddress" />
+
+        <Button
+            android:id="@+id/regi_emailButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="인증번호받기" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/regi_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="인증번호"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="닉네임"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"/>
+    <EditText
+        android:id="@+id/regi_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="닉네임 입력"
+        android:inputType="textEmailAddress"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="비밀번호"
+        android:layout_marginTop="25dp" />
+    <EditText android:id="@+id/regi_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호 입력"
+        android:inputType="textPassword"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="비밀번호 확인"
+        android:layout_marginTop="25dp" />
+
+    <EditText android:id="@+id/regi_repw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="비밀번호 재입력"
+        android:inputType="textPassword"/>
+
+    <TextView
+        android:id="@+id/regi_pwok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="비밀번호가 일치하지 않습니다."
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/regi_signupbutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="가입하기" />
+</LinearLayout>
