@@ -63,7 +63,6 @@ class ReviewActivity : AppCompatActivity(), OnPreviewImageClick {
         foodName.text = intent.getStringExtra("storeName")
 
         val foodNum = intent?.getIntExtra("food_id", 0)
-        var foodRating: String = foodRatingBar.rating.toString()
 
         foodGallery.setOnClickListener {
             if(reviewImageAdapter.itemCount ==0){
