@@ -11,7 +11,7 @@ interface RetrofitReview {
     @POST("review/{foodid}")
     fun postReview(
         @Header("X-AUTH-TOKEN") token: String,
-        @Path("foodid") foodid: Int,
+        @Path("foodid") foodId: Int,
         @Body jsonBody: ReviewData) : Call<MemberResponse>
 
     @Multipart

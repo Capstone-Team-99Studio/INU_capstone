@@ -8,6 +8,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Environment
+import android.util.Log
 import android.widget.*
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +24,6 @@ import com.esafirm.imagepicker.features.registerImagePicker
 import com.esafirm.imagepicker.model.Image
 import com.example.capstone.Login.App
 import com.example.capstone.data.ReviewData
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.RequestBody
 import java.io.ByteArrayOutputStream
@@ -63,7 +63,12 @@ class ReviewActivity : AppCompatActivity(), OnPreviewImageClick {
         foodName.text = intent.getStringExtra("storeName")
 
         val foodNum = intent?.getIntExtra("food_id", 0)
-
+        var foodRating:String? = null
+        val ratingBarListener = RatingBar.OnRatingBarChangeListener {
+                _ , fl: Float, _ ->
+            foodRating = fl.toString()
+        }
+        foodRatingBar.onRatingBarChangeListener = ratingBarListener
         foodGallery.setOnClickListener {
             if(reviewImageAdapter.itemCount ==0){
                 reviewPickerLauncher.launch(reviewPickerConfig)
@@ -107,6 +112,7 @@ class ReviewActivity : AppCompatActivity(), OnPreviewImageClick {
             {
                 if(it == -1) { //서버 응답 실패
                     showToastMsg("리뷰 등록 실패")
+                    Log.d("리뷰 등록", "실패 $")
                 } else {
                     postPhoto(it)
                 }
@@ -117,7 +123,24 @@ class ReviewActivity : AppCompatActivity(), OnPreviewImageClick {
     fun showToastMsg(msg:String){ Toast.makeText(this,msg, Toast.LENGTH_SHORT).show() }
 
     private fun getReviewData() : ReviewData {
-        return ReviewData(foodRatingBar.rating, foodReview.text.toString())
+        var foodRatingString: String? = null
+        if (foodRatingBar.rating == 1.0F) {
+            foodRatingString = "1"
+        }
+        else if (foodRatingBar.rating == 2.0F){
+            foodRatingString = "2"
+        }
+        else if (foodRatingBar.rating == 3.0F){
+            foodRatingString = "3"
+        }
+        else if (foodRatingBar.rating == 4.0F){
+            foodRatingString = "4"
+        }
+        else if (foodRatingBar.rating == 5.0F){
+            foodRatingString = "5"
+        }
+        Log.d("Review Data","${foodRatingBar.rating.toString()}, ${foodReview.text.toString()}")
+        return ReviewData(foodRatingString, foodReview.text.toString())
     }
 
     private fun postPhoto(reviewId: Int) {

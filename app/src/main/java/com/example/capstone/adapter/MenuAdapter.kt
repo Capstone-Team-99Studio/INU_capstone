@@ -1,5 +1,6 @@
 package com.example.capstone.adapter
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,12 +8,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.*
 import androidx.recyclerview.widget.RecyclerView
-import com.example.capstone.AllReviewActivity
+import com.example.capstone.*
+import com.example.capstone.Login.App
 import com.example.capstone.data.Menu
-import com.example.capstone.R
-import com.example.capstone.ReviewActivity
 import com.example.capstone.review.MyDialog
 
 class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val context: Context) : RecyclerView.Adapter<MenuAdapter.ViewHolder> () {
@@ -59,10 +60,26 @@ class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val c
                 }
 
                 override fun writeOnClicked() {
-                    val intent = Intent(holder.itemView?.context, ReviewActivity::class.java)
-                    intent.putExtra("storeName", items?.name)
-                    intent.putExtra("food_id", items?.id)
-                    startActivity(holder.itemView.context, intent, null)
+                    if (App.nowLogin) {
+                        val intent = Intent(holder.itemView?.context, ReviewActivity::class.java)
+                        intent.putExtra("storeName", items?.name)
+                        intent.putExtra("food_id", items?.id)
+                        startActivity(holder.itemView.context, intent, null)
+                    } else {
+                        val builder = AlertDialog.Builder(holder.itemView?.context)
+                        builder.setTitle("로그인 필요")
+                            .setMessage("로그인을 하시겠습니까?")
+                            .setPositiveButton("예", DialogInterface.OnClickListener { dialog, id ->
+                                val intent =
+                                    Intent(holder.itemView?.context, LoginActivity::class.java)
+                                startActivity(holder.itemView.context, intent, null)
+                            })
+                            .setNegativeButton(
+                                "아니요",
+                                DialogInterface.OnClickListener { dialog, id ->
+                                })
+                            .show()
+                    }
                 }
             })
         }

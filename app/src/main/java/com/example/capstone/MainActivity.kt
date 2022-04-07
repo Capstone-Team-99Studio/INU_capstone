@@ -1,5 +1,6 @@
 package com.example.capstone
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -88,10 +90,26 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
 
             }
-            /*
-            R.id.menu_memberInfo -> {
 
+            R.id.menu_memberInfo -> {
+                loginCheck()
+                if (App.nowLogin) {
+                    val intent = Intent(this, MemberInfoActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    val builder = AlertDialog.Builder(this)
+                    builder.setTitle("로그인 필요")
+                        .setMessage("로그인을 하시겠습니까?")
+                        .setPositiveButton("예", DialogInterface.OnClickListener { dialog , id ->
+                            val intent = Intent(this, LoginActivity::class.java)
+                            startActivity(intent)
+                        })
+                        .setNegativeButton("아니요", DialogInterface.OnClickListener { dialog, id ->
+                        })
+                        .show()
+                }
             }
+            /*
             R.id.menu_review -> {
 
             }*/

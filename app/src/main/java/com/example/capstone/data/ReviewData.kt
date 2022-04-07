@@ -1,6 +1,8 @@
 package com.example.capstone.data
 
-data class ReviewData(
-    val reviewStar: Float,
-    val text: String,
+import com.google.gson.annotations.SerializedName
+
+data class ReviewData (
+    @SerializedName("reviewStar") val reviewStar: String?,
+    @SerializedName("text")val text: String,
 )

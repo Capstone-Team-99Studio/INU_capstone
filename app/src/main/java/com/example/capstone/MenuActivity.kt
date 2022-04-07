@@ -78,7 +78,6 @@ class MenuActivity : AppCompatActivity() {
 
                         }
                 }
-
                 override fun onFailure(call: Call<Menu>, t: Throwable) {
                     Log.d("메뉴 통신 실패", "${t.message.toString()}")
                 }
