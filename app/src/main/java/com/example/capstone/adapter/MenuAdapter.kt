@@ -11,6 +11,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat.*
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.capstone.*
 import com.example.capstone.Login.App
 import com.example.capstone.data.Menu
@@ -27,9 +30,9 @@ class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val c
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val menuName: TextView = itemView.findViewById(R.id.menu_name)
-        val menuDetail: TextView = itemView.findViewById(R.id.menu_detail)
         val menuImg: ImageView = itemView.findViewById(R.id.menu_img)
         val menuRating: TextView = itemView.findViewById(R.id.rating)
+        val menuStatus: ImageView = itemView.findViewById(R.id.soldout)
         val menuPrice: TextView = itemView.findViewById(R.id.menu_price)
     }
 
@@ -44,9 +47,29 @@ class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val c
         Log.d("recyclerview ", "${items.name}/${items.price}/${items.status}")
         holder.menuName.text = items?.name
         holder.menuPrice.text = items?.price
-        holder.menuDetail.text = items?.introduce
         holder.menuRating.text = 3.0.toString()
-        holder.menuImg.setImageResource(R.drawable.ic_launcher_background)
+        if (items.status == "SOLDOUT") {
+            holder.menuStatus.setImageResource(R.drawable.soldout)
+        }
+        else {
+            holder.menuStatus.setImageResource(R.drawable.onsale)
+        }
+        if (items.photoId != null) {
+
+            val requestOptions = RequestOptions()
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
+                .placeholder(R.drawable.ic_launcher_background)
+
+            Glide.with(holder.menuImg)
+                .load("https://473d-125-180-55-163.ngrok.io/circles/view/photo/${items.photoId}")
+                .fitCenter()
+                .apply(requestOptions)
+                .override(200,200)
+                .into(holder.menuImg)
+        } else {
+            holder.menuImg.setImageResource(R.drawable.ic_launcher_background)
+        }
+
 
         holder.itemView.setOnClickListener {
             val dialog = MyDialog(context)

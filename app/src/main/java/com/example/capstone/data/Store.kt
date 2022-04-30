@@ -9,7 +9,8 @@ data class StoreData(
     data class Data(
         @SerializedName("id") val id: String,
         @SerializedName("name") val name:String,
-        @SerializedName("introduce") val introduce: String
+        @SerializedName("introduce") val introduce: String,
+        @SerializedName("photoId") val photoId: Int
     )
 }
 

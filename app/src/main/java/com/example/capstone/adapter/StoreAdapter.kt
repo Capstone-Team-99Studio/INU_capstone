@@ -9,6 +9,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 import com.example.capstone.MenuActivity
 import com.example.capstone.R
 import com.example.capstone.data.StoreData
@@ -28,7 +31,22 @@ class StoreAdapter(private var stores: List<StoreData.Data>?) : RecyclerView.Ada
 
         holder.storeName.text = stores?.get(position)?.name
         holder.storeDetail.text = stores?.get(position)?.introduce
-        holder.storeImage.setImageResource(R.drawable.ic_launcher_background)
+
+        if (item.photoId != null) {
+
+            val requestOptions = RequestOptions()
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.NONE)
+                .placeholder(R.drawable.ic_launcher_background)
+
+            Glide.with(holder.storeImage)
+                .load("https://473d-125-180-55-163.ngrok.io/circles/view/photo/${item.photoId}")
+                .fitCenter()
+                .apply(requestOptions)
+                .override(200,200)
+                .into(holder.storeImage)
+        } else {
+            holder.storeImage.setImageResource(R.drawable.ic_launcher_background)
+        }
 
         holder.itemView.setOnClickListener {
             var intent = Intent(holder.itemView?.context, MenuActivity::class.java)

@@ -96,7 +96,6 @@ class foodHolder(val binding: FoodListBinding): RecyclerView.ViewHolder(binding.
         menu?.let{
             binding.menuName.text = menu.name
             binding.menuPrice.text = menu.price
-            binding.menuDetail.text = menu.introduce
             binding.rating.text = "3.0"
             binding.ratingImg.setImageResource(R.drawable.star)
 
