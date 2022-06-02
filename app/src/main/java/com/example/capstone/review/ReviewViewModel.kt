@@ -9,7 +9,7 @@ class ReviewViewModel: ViewModel() {
 
     val client : ReviewServiceCreator
 
-    lateinit var postedImageId : LiveData<List<Int>>
+    lateinit var postedImageId : LiveData<Int>
     lateinit var postedReviewId : LiveData<Int>
 
     init {
@@ -18,7 +18,7 @@ class ReviewViewModel: ViewModel() {
     fun postReview(token: String, foodId: Int, reviewBody: ReviewData) {
         postedReviewId = client.requestReview(token, foodId, reviewBody)
     }
-    fun postPhoto(token:String, id:Int, files:List<MultipartBody.Part>) {
+    fun postPhoto(token:String, id:Int, files:MultipartBody.Part) {
         postedImageId = client.requestReviewPhoto(token, id, files)
     }
 

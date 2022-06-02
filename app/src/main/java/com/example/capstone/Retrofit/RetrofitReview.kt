@@ -19,5 +19,5 @@ interface RetrofitReview {
     fun postReviewPhoto(
         @Header("X-AUTH-TOKEN") token: String,
         @Path("reviewid") reviewid: Int,
-        @Part photo: List<MultipartBody.Part>) : Call<List<Int>>
+        @Part photo: MultipartBody.Part?) : Call<Int>
 }

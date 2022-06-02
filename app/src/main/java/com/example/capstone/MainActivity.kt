@@ -66,14 +66,14 @@ class MainActivity : AppCompatActivity() {
             menu?.getItem(0)?.isEnabled = false
             menu?.getItem(1)?.isEnabled = true
             menu?.getItem(2)?.isEnabled = true
-            menu?.getItem(3)?.isEnabled = true
             Log.d("로그인 정보", "${App.memberInfo}, ${App.nowLogin}")
+            Log.d("로그인 토큰", "${App.prefs.token}")
         } else {
             menu?.getItem(0)?.isEnabled = true
             menu?.getItem(1)?.isEnabled = false
             menu?.getItem(2)?.isEnabled = false
-            menu?.getItem(3)?.isEnabled = false
             Log.d("로그인 정보", "${App.memberInfo}, ${App.nowLogin}")
+            Log.d("로그인 토큰", "${App.prefs.token}")
         }
         return super.onPrepareOptionsMenu(menu)
     }
@@ -162,6 +162,7 @@ class MainActivity : AppCompatActivity() {
                     App.memberInfo = it
                 })
                 Log.d("로그인 정보", "${App.memberInfo}, ${App.nowLogin}")
+
             }
         }
     }

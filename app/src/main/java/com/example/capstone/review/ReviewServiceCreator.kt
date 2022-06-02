@@ -77,12 +77,12 @@ class ReviewServiceCreator {
         })
         return livedata
     }
-    fun requestReviewPhoto(token:String, id:Int, photo:List<MultipartBody.Part>) : LiveData<List<Int>> {
-        val livedata = MutableLiveData<List<Int>>()
+    fun requestReviewPhoto(token:String, id:Int, photo:MultipartBody.Part) : LiveData<Int> {
+        val livedata = MutableLiveData<Int>()
         val call = client.postReviewPhoto(token, id, photo)
 
-        call.enqueue(object: Callback<List<Int>> {
-            override fun onResponse(call: Call<List<Int>>, response: Response<List<Int>>) {
+        call.enqueue(object: Callback<Int> {
+            override fun onResponse(call: Call<Int>, response: Response<Int>) {
                 if (response.isSuccessful) {
                     val body = response.body()
                     livedata.value = body!!
@@ -91,11 +91,11 @@ class ReviewServiceCreator {
                 else {
                     Log.e("Review Data 전송", "실패")
                     Log.e("Review Photo 전송 실패",response.errorBody()!!.string())
-                    livedata.value = listOf(-1)
+                    livedata.value = -1
                 }
             }
 
-            override fun onFailure(call: Call<List<Int>>, t: Throwable) {
+            override fun onFailure(call: Call<Int>, t: Throwable) {
                 Log.e("Review Photo 전송 에러", "${t.message}")
             }
         })

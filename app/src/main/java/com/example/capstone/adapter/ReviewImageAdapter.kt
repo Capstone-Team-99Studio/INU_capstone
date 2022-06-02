@@ -8,12 +8,12 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.esafirm.imagepicker.model.Image
-import com.example.capstone.Image.OnPreviewImageClick
 import com.example.capstone.Image.SlideImageViewer
 import com.example.capstone.R
+import com.example.capstone.ReviewActivity
 import com.example.capstone.data.ImageUrlItem
 
-class ReviewImageAdapter(val mode:Int, val clickListener:OnPreviewImageClick) : RecyclerView.Adapter<ReviewImageAdapter.ImagePreviewViewHolder>() {
+class ReviewImageAdapter(val mode:Int, val clickListener: ReviewActivity) : RecyclerView.Adapter<ReviewImageAdapter.ImagePreviewViewHolder>() {
 
     private val items = mutableListOf<ImageUrlItem>()
 

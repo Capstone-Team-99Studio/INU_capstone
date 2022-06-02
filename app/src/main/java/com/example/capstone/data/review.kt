@@ -18,11 +18,12 @@ data class review(
         data class ReviewX(
             val createTime: Any,
             val nickname: String,
-            val photoIds: Any,
+            val photoIds: List<Int>,
             val retext: Any,
             val star: Int,
             val text: String,
-            val updateTime: Any
+            val updateTime: Any,
+            val reviewId:Int
         )
     }
 }

@@ -8,6 +8,7 @@ data class Menu(
         val foodOrigin: String,
         val name: String,
         val phoneNumber: String
+
     )
 
     {
@@ -16,7 +17,9 @@ data class Menu(
             val name: String,
             val price: String,
             val status: Any,
-            val photoId: Int
+            val photoId: Int,
+            val rateAverage : Float
+
         )
     }
 }

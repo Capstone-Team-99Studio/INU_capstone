@@ -11,7 +11,5 @@
     <item
         android:id="@+id/menu_memberInfo"
         android:title="회원 정보" />
-    <item
-        android:id="@+id/menu_review"
-        android:title="리뷰 내역" />
+
 </menu>

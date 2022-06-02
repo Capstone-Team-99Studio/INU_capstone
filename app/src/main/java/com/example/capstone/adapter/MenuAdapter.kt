@@ -47,7 +47,12 @@ class MenuAdapter(private val foods: Array<Menu.Data.FoodListDto>, private val c
         Log.d("recyclerview ", "${items.name}/${items.price}/${items.status}")
         holder.menuName.text = items?.name
         holder.menuPrice.text = items?.price
-        holder.menuRating.text = 3.0.toString()
+
+        if (items.rateAverage == null) {
+            holder.menuRating.text = "0.0"
+        } else {
+            holder.menuRating.text = items?.rateAverage.toString()
+        }
         if (items.status == "SOLDOUT") {
             holder.menuStatus.setImageResource(R.drawable.soldout)
         }

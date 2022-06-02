@@ -4,27 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6F8F8"
     android:orientation="vertical"
     tools:context="com.example.capstone.MenuActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="224dp"
+        android:layout_height="198dp"
         android:layout_margin="20dp"
-        android:layout_weight="1"
-        android:background="#C38A5E">
+        android:layout_weight="1">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#E6CFCF">
+            android:layout_height="wrap_content"
+            android:background="#F4F4F4">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="84dp"
-                android:layout_marginEnd="4dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/store_number"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@android:drawable/ic_menu_call" />
@@ -45,20 +45,20 @@
                 android:id="@+id/store_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="112dp"
+                android:layout_marginEnd="88dp"
                 android:text="010-1234-1234"
                 android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/store_name2"
-                app:layout_constraintVertical_bias="0.222" />
+                app:layout_constraintVertical_bias="0.268" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </FrameLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_food"
         android:layout_width="match_parent"
-        android:layout_height="418dp"
+        android:layout_height="552dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/food_list" />
 
